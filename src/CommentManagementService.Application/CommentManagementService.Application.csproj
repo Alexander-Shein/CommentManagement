@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+	  <ProjectReference Include="..\Architecture\Application\EmpCore.Application\EmpCore.Application.csproj" />
+	  <ProjectReference Include="..\Architecture\Infrastructure\EmpCore.Infrastructure.MessageBus\EmpCore.Infrastructure.MessageBus.CAP.csproj" />
+	  <ProjectReference Include="..\Architecture\Infrastructure\EmpCore.Infrastructure\EmpCore.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Architecture\QueryStack\EmpCore.QueryStack.Dapper\EmpCore.QueryStack.Dapper.csproj" />
+      <ProjectReference Include="..\CommentManagementService.Domain\CommentManagementService.Domain.csproj" />
+      <ProjectReference Include="..\CommentManagementService.Persistence\CommentManagementService.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="BlogPostManagementService.Contracts">
+        <HintPath>..\Libs\BlogPostManagementService.Contracts.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
