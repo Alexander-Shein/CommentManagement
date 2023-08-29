@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: commentmanagementservicewebapi 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: commentmanagementservicewebapi
+  template:
+    metadata:
+      labels:
+        app: commentmanagementservicewebapi 
+    spec:
+      containers:
+        - name: commentmanagementservicewebapi 
+          image: empcontainerstorage.azurecr.io/commentmanagementservicewebapi
+          ports:
+          - containerPort: 8080
