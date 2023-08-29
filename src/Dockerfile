@@ -20,6 +20,7 @@ COPY ["Architecture/QueryStack/EmpCore.QueryStack.Dapper/EmpCore.QueryStack.Dapp
 COPY ["CommentManagementService.Domain/CommentManagementService.Domain.csproj", "CommentManagementService.Domain/"]
 COPY ["CommentManagementService.Persistence/CommentManagementService.Persistence.csproj", "CommentManagementService.Persistence/"]
 COPY ["Architecture/Infrastructure/EmpCore.Persistence.EntityFrameworkCore/EmpCore.Persistence.EntityFrameworkCore.csproj", "Architecture/Infrastructure/EmpCore.Persistence.EntityFrameworkCore/"]
+COPY ["CommentManagementService.Application/BlogPostManagementService.Contracts.dll", "CommentManagementService.Application/"]
 RUN dotnet restore "CommentManagementService.WebApi/CommentManagementService.WebApi.csproj"
 COPY . .
 WORKDIR "/src/CommentManagementService.WebApi"
