@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'f1aab728-caf9-4f95-bc1c-1d07b94767a3'
   imageRepository: 'commentmanagementservicewebapi'
   containerRegistry: 'empcontainerstorage.azurecr.io'
-  dockerfilePath: '**/src/Dockerfile'
+  dockerfilePath: '**/src/CommentManagementService.WebApi/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'empcontainerstoragec38a-auth'
 
