@@ -21,7 +21,7 @@ COPY ["src/CommentManagementService.Domain/CommentManagementService.Domain.cspro
 COPY ["src/CommentManagementService.Persistence/CommentManagementService.Persistence.csproj", "CommentManagementService.Persistence/"]
 COPY ["src/Architecture/Infrastructure/EmpCore.Persistence.EntityFrameworkCore/EmpCore.Persistence.EntityFrameworkCore.csproj", "Architecture/Infrastructure/EmpCore.Persistence.EntityFrameworkCore/"]
 COPY ["src/CommentManagementService.Application/BlogPostManagementService.Contracts.dll", "CommentManagementService.Application/"]
-RUN dotnet restore "CommentManagementService.WebApi/CommentManagementService.WebApi.csproj"
+RUN dotnet restore "src/CommentManagementService.WebApi/CommentManagementService.WebApi.csproj"
 COPY . .
 WORKDIR "/src/CommentManagementService.WebApi"
 RUN dotnet build "CommentManagementService.WebApi.csproj" -c Release -o /app/build
