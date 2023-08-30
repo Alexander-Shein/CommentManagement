@@ -6,8 +6,7 @@ spec:
     type: LoadBalancer
     ports:
     - protocol: TCP
-      containerPort: 80
-      port: 8080
+      port: 80
       targetPort: 8080
     selector:
         app: commentmanagementservicewebapi
