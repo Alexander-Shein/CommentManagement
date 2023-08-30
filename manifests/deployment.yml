@@ -16,4 +16,4 @@ spec:
         - name: commentmanagementservicewebapi 
           image: empcontainerstorage.azurecr.io/commentmanagementservicewebapi
           ports:
-          - containerPort: 8080
+          - containerPort: 80
