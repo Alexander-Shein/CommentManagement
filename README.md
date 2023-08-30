@@ -5,6 +5,7 @@ Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagge
 - It's subscribed to 2 events from BlogPostManagementService: BlogPostPublishedEvent, BlogPostDeletedEvent
 
 
+DB schema
 ```
 CREATE TABLE [dbo].[PublishedBlogPost]
 (
