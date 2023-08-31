@@ -9,11 +9,11 @@ public class MessageTooShortFailure : Failure
     public int MinLength { get; }
     public int ActualLength { get; }
 
-    public MessageTooShortFailure(int minLength, int actualLength) : base(
+    public MessageTooShortFailure(int actualLength) : base(
         ErrorCode,
-        $"The length of message must be {minLength} characters or more. You entered {actualLength} characters.")
+        $"The length of message must be {ValueObjects.Message.MinLength} characters or more. You entered {actualLength} characters.")
     {
-        MinLength = minLength;
+        MinLength = ValueObjects.Message.MinLength;
         ActualLength = actualLength;
     }
 }

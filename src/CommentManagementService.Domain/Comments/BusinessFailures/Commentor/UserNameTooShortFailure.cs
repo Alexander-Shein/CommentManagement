@@ -1,4 +1,5 @@
-﻿using EmpCore.Domain;
+﻿using CommentManagementService.Domain.Comments.ValueObjects;
+using EmpCore.Domain;
 
 namespace CommentManagementService.Domain.Comments.BusinessFailures.Commentor;
 
@@ -9,11 +10,11 @@ public class UserNameTooShortFailure : Failure
     public int MinLength { get; }
     public int ActualLength { get; }
 
-    public UserNameTooShortFailure(int minLength, int actualLength) : base(
+    public UserNameTooShortFailure(int actualLength) : base(
         ErrorCode,
-        $"The length of user name must be {minLength} characters or more. You entered {actualLength} characters.")
+        $"The length of user name must be {UserName.MinLength} characters or more. You entered {actualLength} characters.")
     {
-        MinLength = minLength;
+        MinLength = UserName.MinLength;
         ActualLength = actualLength;
     }
 }

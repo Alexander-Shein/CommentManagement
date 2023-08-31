@@ -5,28 +5,32 @@ namespace CommentManagementService.Domain.Comments.ValueObjects;
 
 public class Message : SingleValueObject<string>
 {
-    private const int MinLength = 2;
-    private const int MaxLenght = 1000;
-    private static readonly IEnumerable<string> BlacklistedWorlds = new List<string> { "Word1", "Word2", "Word3" };
+    public const int MinLength = 2;
+    public const int MaxLenght = 1000;
+    private static readonly IEnumerable<string> BlacklistedWords = new List<string> { "Word1", "Word2", "Word3" };
 
     private Message(string value) : base(value?.Trim()) { }
 
     public static Result<Message> Create(string message)
     {
-        if (string.IsNullOrWhiteSpace(message)) return Result.Failure<Message>(EmptyMessageFailure.Instance);
-        message = message.Trim();
+        message = message?.Trim();
+        
+        if (string.IsNullOrWhiteSpace(message)) return EmptyMessageFailure.Instance;
+        if (message.Length > MaxLenght) return new MessageMaxLengthExceededFailure(message.Length);
+        if (message.Length < MinLength) return new MessageTooShortFailure(message.Length);
 
-        if (message.Length > MaxLenght)
-            return Result.Failure<Message>(new MessageMaxLengthExceededFailure(MaxLenght, message.Length));
+        message = HideBlacklistedWords(message);
+        
+        return new Message(message);
+    }
 
-        if (message.Length < MinLength)
-            return Result.Failure<Message>(new MessageTooShortFailure(MinLength, message.Length));
-
-        foreach (var blackListedWord in BlacklistedWorlds)
+    private static string HideBlacklistedWords(string message)
+    {
+        foreach (var blackListedWord in BlacklistedWords)
         {
             message = message.Replace(blackListedWord, "***", StringComparison.OrdinalIgnoreCase);
         }
 
-        return Result.Success(new Message(message));
+        return message;
     }
 }

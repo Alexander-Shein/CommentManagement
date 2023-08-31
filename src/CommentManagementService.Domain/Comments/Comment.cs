@@ -16,7 +16,11 @@ public class Comment : AggregateRoot<long>
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
-    internal Comment(PublishedBlogPost publishedBlogPost, Commentor commentor, Message message, Comment? parentComment)
+    internal Comment(
+        PublishedBlogPost publishedBlogPost,
+        Commentor commentor,
+        Message message,
+        Comment? parentComment = null)
     {
         var now = DateTime.UtcNow;
 
@@ -35,6 +39,6 @@ public class Comment : AggregateRoot<long>
             message ?? throw new ArgumentNullException(nameof(message)),
             this);
 
-        return Result.Success(comment);
+        return comment;
     }
 }

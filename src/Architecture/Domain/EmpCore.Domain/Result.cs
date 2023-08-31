@@ -83,4 +83,5 @@ public class Result<T> : Result
         
     public static implicit operator Result<T>(List<Failure> failures) => Failure<T>(failures);
     public static implicit operator Result<T>(Failure[] failures) => Failure<T>(failures);
+    public static implicit operator Result<T>(Failure failure) => Failure<T>(failure);
 }

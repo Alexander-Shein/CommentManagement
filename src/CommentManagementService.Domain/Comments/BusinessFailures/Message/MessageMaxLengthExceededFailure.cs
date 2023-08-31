@@ -9,11 +9,11 @@ public class MessageMaxLengthExceededFailure : Failure
     public int MaxLength { get; }
     public int ActualLength { get; }
 
-    public MessageMaxLengthExceededFailure(int maxLength, int actualLength) : base(
+    public MessageMaxLengthExceededFailure(int actualLength) : base(
         ErrorCode,
-        $"The length of message must be {maxLength} characters or fewer. You entered {actualLength} characters.")
+        $"The length of message must be {ValueObjects.Message.MaxLenght} characters or fewer. You entered {actualLength} characters.")
     {
-        MaxLength = maxLength;
+        MaxLength =  ValueObjects.Message.MaxLenght;
         ActualLength = actualLength;
     }
 }

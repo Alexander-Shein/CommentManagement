@@ -17,6 +17,6 @@ public class Commentor : Entity<string>
             UserName = userName ?? throw new ArgumentNullException(nameof(userName))
         };
 
-        return Result.Success(commentor);
+        return commentor;
     }
 }
