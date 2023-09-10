@@ -72,6 +72,7 @@ public class Comment : AggregateRoot<long>
     }
 }
 ```
+As you can see it's possible to create a reply only if you have a comment object. No other way because everything is encapsulated and private constructors won't allow you to create an instance in invalid state.
 
 DB schema
 ```SQL
