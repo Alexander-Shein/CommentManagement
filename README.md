@@ -1,6 +1,6 @@
 # CommentManagement
 
-- Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html
+- Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html using 
 
 - Architecture details: https://github.com/Alexander-Shein/EmpCore
 
