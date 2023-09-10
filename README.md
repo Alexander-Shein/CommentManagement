@@ -10,8 +10,68 @@
 
 # API endpoints
 - `GET /v{version}/comments` - searches for comments. Returns paged list. Can be filtered by BlogPostId
-- `POST /v{version}/comments`
+- `POST /v{version}/comments` - it creates a new comment on published blog post. You can leave comments only when `BlogPostPublishedEvent` is received. Domain Model with implementation:
+```csharp
+public class PublishedBlogPost : AggregateRoot<Guid>
+{
+    public static Result<PublishedBlogPost> Create(Guid id)
+    {
+        if (id == Guid.Empty) return EmptyBlogPostIdFailure.Instance;
+        return new PublishedBlogPost{Id = id};
+    }
+    
+    public Result<Comment> Comment(Commentor commentor, Message message)
+    {
+        var comment = new Comment(this,
+            commentor ?? throw new ArgumentNullException(nameof(commentor)),
+            message ?? throw new ArgumentNullException(nameof(message)));
 
+        return Result.Ok(comment);
+    }
+}
+```
+As you can see here `PublishedBlogPost` has method `Comment`. It means that is possible to create a new comment only if you have `PublishedBlogPost` object. 
+- `PUT /v{version}/comments/{commentId}/replies` - creates a replay on a comment. Domain Model with implementation:
+```csharp\
+public class Comment : AggregateRoot<long>
+{
+    private Comment() { }
+
+    public PublishedBlogPost PublishedBlogPost { get; private set; }
+    public Commentor Commentor { get; private set; }
+    public Comment? ParentComment { get; private set; }
+    public Message Message { get; private set; }
+    
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
+
+    internal Comment(
+        PublishedBlogPost publishedBlogPost,
+        Commentor commentor,
+        Message message,
+        Comment? parentComment = null)
+    {
+        var now = DateTime.UtcNow;
+
+        PublishedBlogPost = publishedBlogPost ?? throw new ArgumentNullException(nameof(publishedBlogPost));
+        Commentor = commentor ?? throw new ArgumentNullException(nameof(commentor));
+        Message = message ?? throw new ArgumentNullException(nameof(message));
+        ParentComment = parentComment;
+        CreatedAt = now;
+        UpdatedAt = now;
+    }
+
+    public Result<Comment> Reply(Commentor commentor, Message message)
+    {
+        var comment = new Comment(PublishedBlogPost,
+            commentor ?? throw new ArgumentNullException(nameof(commentor)),
+            message ?? throw new ArgumentNullException(nameof(message)),
+            this);
+
+        return comment;
+    }
+}
+```
 
 DB schema
 ```SQL
