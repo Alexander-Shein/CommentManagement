@@ -1,12 +1,18 @@
 # CommentManagement
 
-Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html
+- Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html
 
-- It's subscribed to 2 events from BlogPostManagementService: BlogPostPublishedEvent, BlogPostDeletedEvent
+- Architecture details: https://github.com/Alexander-Shein/EmpCore
+
+# It's subscribed to 2 integration events from BlogPostManagementService
+- `BlogPostPublishedEvent` once this event is received `CommentManagementService` enables leaving comments on a published blog post.
+- `BlogPostDeletedEvent` once this event is received `CommentManagementService` deletes all the comments for a deleted blog post and disables leaving comments.
+
+- 
 
 
 DB schema
-```
+```SQL
 CREATE TABLE [dbo].[PublishedBlogPost]
 (
   [Id]				UNIQUEIDENTIFIER NOT NULL
