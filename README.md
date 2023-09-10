@@ -30,7 +30,7 @@ public class PublishedBlogPost : AggregateRoot<Guid>
     }
 }
 ```
-As you can see here `PublishedBlogPost` has method `Comment`. It means that is possible to create a new comment only if you have `PublishedBlogPost` object. 
+As you can see here `PublishedBlogPost` has method `Comment`. It means that it's possible to create a new comment only if you have `PublishedBlogPost` object. 
 - `PUT /v{version}/comments/{commentId}/replies` - creates a replay on a comment. Domain Model with implementation:
 ```csharp\
 public class Comment : AggregateRoot<long>
