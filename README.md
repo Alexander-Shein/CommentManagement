@@ -8,7 +8,9 @@
 - `BlogPostPublishedEvent` once this event is received `CommentManagementService` enables leaving comments on a published blog post.
 - `BlogPostDeletedEvent` once this event is received `CommentManagementService` deletes all the comments for a deleted blog post and disables leaving comments.
 
-- 
+# API endpoints
+- `GET /v{version}/comments` - searches for comments. Returns paged list. Can be filtered by BlogPostId
+- `POST /v{version}/comments`
 
 
 DB schema
