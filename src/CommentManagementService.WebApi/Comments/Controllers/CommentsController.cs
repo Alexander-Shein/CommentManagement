@@ -4,12 +4,12 @@ using CommentManagementService.Application.Comments.Queries.SearchComments;
 using CommentManagementService.Application.Comments.Queries.SearchComments.DTOs;
 using CommentManagementService.WebApi.Comments.Models;
 using EmpCore.Api.Middleware.Security;
-using EmpCore.Application.Queries;
 using EmpCore.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
+using EmpCore.QueryStack;
 
 namespace CommentManagementService.WebApi.Comments.Controllers;
 

@@ -1,10 +1,9 @@
 using EmpCore.Application.Commands;
 using EmpCore.Domain;
-using MediatR;
 
 namespace CommentManagementService.Application.Comments.Commands.ReplyToComment;
 
-public class ReplyToCommentCommand : Command, IRequest<Result<long>>
+public class ReplyToCommentCommand : Command<Result<long>>
 {
     public long CommentId { get; }
     public string CommentorId { get; }

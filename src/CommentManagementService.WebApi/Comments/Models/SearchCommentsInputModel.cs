@@ -1,4 +1,4 @@
-using EmpCore.Application.Queries;
+using EmpCore.QueryStack;
 
 namespace CommentManagementService.WebApi.Comments.Models;
 

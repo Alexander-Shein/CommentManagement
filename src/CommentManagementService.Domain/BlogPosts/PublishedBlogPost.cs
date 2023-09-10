@@ -19,6 +19,6 @@ public class PublishedBlogPost : AggregateRoot<Guid>
             commentor ?? throw new ArgumentNullException(nameof(commentor)),
             message ?? throw new ArgumentNullException(nameof(message)));
 
-        return Result.Success(comment);
+        return Result.Ok(comment);
     }
 }

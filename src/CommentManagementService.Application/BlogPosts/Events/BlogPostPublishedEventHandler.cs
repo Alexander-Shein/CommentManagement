@@ -32,6 +32,6 @@ public class BlogPostPublishedEventHandler : ICapSubscribe
         
         _publishedBlogPostDomainRepository.Save(blogPost);
 
-        await _unitOfWork.SaveAsync().ConfigureAwait(false);
+        await _unitOfWork.SaveAsync(CancellationToken.None).ConfigureAwait(false);
     }
 }

@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpCore.WebApi.Swagger", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpCore.QueryStack.Dapper", "Architecture\QueryStack\EmpCore.QueryStack.Dapper\EmpCore.QueryStack.Dapper.csproj", "{14113D02-63F3-4DBC-94C9-F5EE517A9243}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpCore.QueryStack", "Architecture\QueryStack\EmpCore.QueryStack\EmpCore.QueryStack.csproj", "{B4BD1175-EEB9-40E8-879E-90909116EE81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{14113D02-63F3-4DBC-94C9-F5EE517A9243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14113D02-63F3-4DBC-94C9-F5EE517A9243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14113D02-63F3-4DBC-94C9-F5EE517A9243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BD1175-EEB9-40E8-879E-90909116EE81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BD1175-EEB9-40E8-879E-90909116EE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BD1175-EEB9-40E8-879E-90909116EE81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BD1175-EEB9-40E8-879E-90909116EE81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +127,7 @@ Global
 		{557DB87C-5D0B-4E0F-8A28-9971704B2D02} = {859D0294-34B5-48AA-A1AF-9C04D078A7CC}
 		{14BF8D5A-7B8D-49A4-81ED-C70910A3EBFF} = {859D0294-34B5-48AA-A1AF-9C04D078A7CC}
 		{14113D02-63F3-4DBC-94C9-F5EE517A9243} = {0ADE9F3A-76E2-41D2-A7D3-D1E861CB96AE}
+		{B4BD1175-EEB9-40E8-879E-90909116EE81} = {0ADE9F3A-76E2-41D2-A7D3-D1E861CB96AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35D129F7-6BD6-4018-86FE-537F37FDF54C}

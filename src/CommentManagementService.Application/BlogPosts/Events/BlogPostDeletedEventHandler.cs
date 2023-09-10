@@ -29,6 +29,6 @@ public class BlogPostDeletedEventHandler : ICapSubscribe
         
         _publishedBlogPostDomainRepository.Delete(blogPost);
 
-        await _unitOfWork.SaveAsync().ConfigureAwait(false);
+        await _unitOfWork.SaveAsync(CancellationToken.None).ConfigureAwait(false);
     }
 }

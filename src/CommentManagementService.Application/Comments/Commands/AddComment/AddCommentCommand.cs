@@ -1,10 +1,9 @@
 using EmpCore.Application.Commands;
 using EmpCore.Domain;
-using MediatR;
 
 namespace CommentManagementService.Application.Comments.Commands.AddComment;
 
-public class AddCommentCommand : Command, IRequest<Result<long>>
+public class AddCommentCommand : Command<Result<long>>
 {
     public Guid PublishedBlogPostId { get; }
     public string CommentorId { get; }

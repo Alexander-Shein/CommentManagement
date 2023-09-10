@@ -1,10 +1,9 @@
 ﻿using CommentManagementService.Application.Comments.Queries.SearchComments.DTOs;
-using EmpCore.Application.Queries;
-using MediatR;
+using EmpCore.QueryStack;
 
 namespace CommentManagementService.Application.Comments.Queries.SearchComments;
 
-public class SearchCommentsQuery : IRequest<PagedList<CommentListItemDto>>
+public class SearchCommentsQuery : Query<PagedList<CommentListItemDto>>
 {
     public Guid? BlogPostId { get; }
     public int PageSize { get; }
