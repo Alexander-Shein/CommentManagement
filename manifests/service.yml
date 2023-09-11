@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - comment-management.polandcentral.cloudapp.azure.com
-    secretName: blog-post-secret-name
+    secretName: comment-secret-name
   rules:
   - host: comment-management.polandcentral.cloudapp.azure.com
     http:
