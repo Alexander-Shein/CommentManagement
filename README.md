@@ -1,6 +1,6 @@
 # CommentManagement
 
-- Deployed here: http://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html using 
+- Deployed here: https://comment-management.polandcentral.cloudapp.azure.com/swagger/index.html using 
 
 - Architecture details: https://github.com/Alexander-Shein/EmpCore
 
@@ -77,7 +77,7 @@ public class Comment : AggregateRoot<long>
 ```
 As you can see it's possible to create a reply only if you have a comment object. No other way because everything is encapsulated and private/internal constructors won't allow you to create an instance in invalid state.
 
-DB schema
+CommentManagement DB schema
 ```SQL
 CREATE TABLE [dbo].[PublishedBlogPost]
 (
