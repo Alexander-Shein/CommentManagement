@@ -9,6 +9,9 @@
 - `BlogPostDeletedEvent` once this event is received `CommentManagementService` deletes all the comments for a deleted blog post and disables leaving comments.
 
 # API endpoints
+
+FYI: Put version `1` everywhere when you test
+
 - `GET /v{version}/comments` - searches for comments. Returns paged list. Can be filtered by BlogPostId
 - `POST /v{version}/comments` - it creates a new comment on published blog post. You can leave comments only when `BlogPostPublishedEvent` is received. Domain Model with implementation:
 ```csharp
