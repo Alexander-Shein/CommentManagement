@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - comment-management.polandcentral.cloudapp.azure.com
+    - comment.management.polandcentral.cloudapp.azure.com
     secretName: comment-secret-name
   rules:
-  - host: comment-management.polandcentral.cloudapp.azure.com
+  - host: comment.management.polandcentral.cloudapp.azure.com
     http:
       paths:
       - path: /
