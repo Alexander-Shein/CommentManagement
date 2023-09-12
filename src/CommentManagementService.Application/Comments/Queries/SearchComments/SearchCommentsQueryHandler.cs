@@ -34,7 +34,7 @@ ORDER BY [CreatedAt] DESC;";
         using (var dbConn = await _connectionFactory.CreateConnectionAsync().ConfigureAwait(false))
         {
             var dtos = (await dbConn.QueryAsync<CommentListItemDto>(SQL, prms).ConfigureAwait(false)).ToList();
-            return new PagedList<CommentListItemDto>(dtos.Count, 100, 1, "CreatedAt", SortDir.Desc, dtos);
+            return new PagedList<CommentListItemDto>(dtos.Count, query.PageSize, query.PageNumber, query.SortField, SortDir.Desc, dtos);
         }
     }
 }
