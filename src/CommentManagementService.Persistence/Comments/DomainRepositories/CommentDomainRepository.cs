@@ -16,12 +16,16 @@ public class CommentDomainRepository : ICommentDomainRepository
     {
         if (commentId <= 0) return null;
 
-        return await _appDbContext.FindAsync<Comment>(commentId).ConfigureAwait(false);
+        var comment = await _appDbContext
+            .FindAsync<Comment>(commentId)
+            .ConfigureAwait(false);
+        
+        return comment;
     }
 
     public void Save(Comment comment)
     {
-        _appDbContext.Add(comment ?? throw new ArgumentNullException(nameof(comment)));
+        _appDbContext.Add(comment);
         _appDbContext.Attach(comment.Commentor);
     }
 }

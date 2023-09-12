@@ -15,11 +15,17 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.HasOne(x => x.PublishedBlogPost)
             .WithMany()
             .HasForeignKey("PublishedBlogPostId")
-            .OnDelete(DeleteBehavior.Cascade);
-
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+        
+        builder.Navigation(e => e.PublishedBlogPost).AutoInclude();
+        
         builder.HasOne(x => x.Commentor)
             .WithMany()
-            .HasForeignKey("CommentorId");
+            .HasForeignKey("CommentorId")
+            .IsRequired();
+        
+        builder.Navigation(e => e.Commentor).AutoInclude();
 
         builder
             .HasOne(x => x.ParentComment)
@@ -33,7 +39,7 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
 
         builder.Property(p => p.CreatedAt).HasColumnName("CreatedAt").HasColumnType("DATETIME2").IsRequired();
         builder.Property(p => p.UpdatedAt).HasColumnName("UpdatedAt").HasColumnType("DATETIME2").IsRequired();
-
+        
         builder.Ignore(p => p.DomainEvents);
     }
 }
