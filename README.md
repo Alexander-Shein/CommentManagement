@@ -77,6 +77,8 @@ public class Comment : AggregateRoot<long>
 ```
 As you can see it's possible to create a reply only if you have a comment object. No other way because everything is encapsulated and private/internal constructors won't allow you to create an instance in invalid state.
 
+P.S. Sometimes code return `Result` and sometimes it throws an exception. The difference between them is if it throws an exception it's a bug in code. If it returns a `Result` object - it's a validation failure. Before you decide to return a `Result` or to throw an error you need to ask a question - Can a user do something with it? If yes - return a `Result` object. If no - throw an exception.
+
 CommentManagement DB schema
 ```SQL
 CREATE TABLE [dbo].[PublishedBlogPost]
