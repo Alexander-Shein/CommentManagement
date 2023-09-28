@@ -3,18 +3,19 @@ using EmpCore.Domain;
 
 namespace CommentManagementService.Domain.Comments;
 
-public class Commentor : Entity<string>
+public class Commentor : Entity<CommentorId>
 {
     public UserName UserName { get; private set; }
 
-    public static Result<Commentor> Create(string id, UserName userName)
+    public static Result<Commentor> Create(CommentorId commentorId, UserName userName)
     {
-        if (String.IsNullOrWhiteSpace(id)) throw new ArgumentException("Empty commentor id.", nameof(id));
+        Contracts.Require(commentorId != null);
+        Contracts.Require(userName != null);
 
         var commentor = new Commentor
         {
-            Id = id,
-            UserName = userName ?? throw new ArgumentNullException(nameof(userName))
+            Id = commentorId,
+            UserName = userName
         };
 
         return commentor;

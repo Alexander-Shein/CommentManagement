@@ -9,7 +9,7 @@ public class Message : SingleValueObject<string>
     public const int MaxLenght = 1000;
     private static readonly IEnumerable<string> BlacklistedWords = new List<string> { "Word1", "Word2", "Word3" };
 
-    private Message(string value) : base(value?.Trim()) { }
+    private Message(string value) : base(value) { }
 
     public static Result<Message> Create(string message)
     {

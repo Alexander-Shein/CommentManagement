@@ -45,9 +45,12 @@ public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, Resul
     private static Result<Commentor> BuildCommentor(string commentorId, string userName)
     {
         var userNameResult = UserName.Create(userName);
-        if (userNameResult.IsFailure) return Result.Fail<Commentor>(userNameResult.Failures);
+        var commentorIdResult = CommentorId.Create(commentorId);
+
+        var result = Result.Combine(userNameResult, commentorIdResult);
+        if (result.IsFailure) return Result.Fail<Commentor>(result.Failures);
         
-        var commentor = Commentor.Create(commentorId, userNameResult);
+        var commentor = Commentor.Create(commentorIdResult, userNameResult);
         return commentor;
     }
 }

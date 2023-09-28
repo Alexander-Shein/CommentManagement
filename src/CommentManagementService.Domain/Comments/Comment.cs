@@ -22,23 +22,25 @@ public class Comment : AggregateRoot<long>
         Message message,
         Comment? parentComment = null)
     {
+        Contracts.Require(publishedBlogPost != null);
+        Contracts.Require(commentor != null);
+        Contracts.Require(message != null);
+        
         var now = DateTime.UtcNow;
 
-        PublishedBlogPost = publishedBlogPost ?? throw new ArgumentNullException(nameof(publishedBlogPost));
-        Commentor = commentor ?? throw new ArgumentNullException(nameof(commentor));
-        Message = message ?? throw new ArgumentNullException(nameof(message));
+        PublishedBlogPost = publishedBlogPost;
+        Commentor = commentor;
+        Message = message;
         ParentComment = parentComment;
-        CreatedAt = now;
-        UpdatedAt = now;
+        CreatedAt = UpdatedAt = now;
     }
 
     public Result<Comment> Reply(Commentor commentor, Message message)
     {
-        var comment = new Comment(PublishedBlogPost,
-            commentor ?? throw new ArgumentNullException(nameof(commentor)),
-            message ?? throw new ArgumentNullException(nameof(message)),
-            this);
-
+        Contracts.Require(commentor != null);
+        Contracts.Require(message != null);
+        
+        var comment = new Comment(PublishedBlogPost, commentor, message, this);
         return comment;
     }
 }

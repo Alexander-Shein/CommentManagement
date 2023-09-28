@@ -15,10 +15,10 @@ public class PublishedBlogPost : AggregateRoot<Guid>
     
     public Result<Comment> Comment(Commentor commentor, Message message)
     {
-        var comment = new Comment(this,
-            commentor ?? throw new ArgumentNullException(nameof(commentor)),
-            message ?? throw new ArgumentNullException(nameof(message)));
-
+        Contracts.Require(commentor != null);
+        Contracts.Require(message != null);
+        
+        var comment = new Comment(this, commentor, message);
         return Result.Ok(comment);
     }
 }
