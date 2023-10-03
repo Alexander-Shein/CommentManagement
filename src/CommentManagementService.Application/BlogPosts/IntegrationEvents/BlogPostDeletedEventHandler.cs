@@ -1,17 +1,16 @@
 using BlogPostManagementService.Contracts;
-using CommentManagementService.Domain.BlogPosts;
 using CommentManagementService.Persistence.BlogPosts.DomainRepositories;
 using DotNetCore.CAP;
 using EmpCore.Infrastructure.Persistence;
 
-namespace CommentManagementService.Application.BlogPosts.Events;
+namespace CommentManagementService.Application.BlogPosts.IntegrationEvents;
 
-public class BlogPostPublishedEventHandler : ICapSubscribe
+public class BlogPostDeletedEventHandler : ICapSubscribe
 {
     private readonly IPublishedBlogPostDomainRepository _publishedBlogPostDomainRepository;
     private readonly IUnitOfWork _unitOfWork;
     
-    public BlogPostPublishedEventHandler(
+    public BlogPostDeletedEventHandler(
         IPublishedBlogPostDomainRepository publishedBlogPostDomainRepository,
         IUnitOfWork unitOfWork)
     {
@@ -20,17 +19,15 @@ public class BlogPostPublishedEventHandler : ICapSubscribe
         _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
     }
 
-    [CapSubscribe(BlogPostPublishedEvent.EventName)]
-    public async Task HandleAsync(BlogPostPublishedEvent @event)
+    [CapSubscribe(BlogPostDeletedEvent.EventName)]
+    public async Task HandleAsync(BlogPostDeletedEvent @event)
     {
         if (@event == null) throw new ArgumentNullException(nameof(@event));
 
         var blogPost = await _publishedBlogPostDomainRepository.GetByIdAsync(@event.BlogPostId).ConfigureAwait(false);
-        if (blogPost != null) return;
-
-        blogPost = PublishedBlogPost.Create(@event.BlogPostId);
+        if (blogPost == null) return;
         
-        _publishedBlogPostDomainRepository.Save(blogPost);
+        _publishedBlogPostDomainRepository.Delete(blogPost);
 
         await _unitOfWork.SaveAsync(CancellationToken.None).ConfigureAwait(false);
     }

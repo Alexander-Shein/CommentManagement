@@ -1,4 +1,4 @@
-using CommentManagementService.Domain.Comments.BusinessFailures.AuthorId;
+using CommentManagementService.Domain.Comments.BusinessRules.AuthorId;
 using EmpCore.Domain;
 
 namespace CommentManagementService.Domain.Comments.ValueObjects;

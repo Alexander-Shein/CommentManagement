@@ -1,6 +1,6 @@
 ﻿using EmpCore.Domain;
 
-namespace CommentManagementService.Domain.Comments.BusinessFailures.Message;
+namespace CommentManagementService.Domain.Comments.BusinessRules.Message;
 
 public class MessageMaxLengthExceededFailure : Failure
 {

@@ -1,6 +1,6 @@
 ﻿using EmpCore.Domain;
 
-namespace CommentManagementService.Domain.Comments.BusinessFailures.Commentor;
+namespace CommentManagementService.Domain.Comments.BusinessRules.Commentor;
 
 public class NotAllowedUserNameCharactersFailure : Failure
 {

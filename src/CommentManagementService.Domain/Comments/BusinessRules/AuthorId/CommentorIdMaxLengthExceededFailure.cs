@@ -1,6 +1,6 @@
 using EmpCore.Domain;
 
-namespace CommentManagementService.Domain.Comments.BusinessFailures.AuthorId;
+namespace CommentManagementService.Domain.Comments.BusinessRules.AuthorId;
 
 public class CommentorIdMaxLengthExceededFailure : Failure
 {

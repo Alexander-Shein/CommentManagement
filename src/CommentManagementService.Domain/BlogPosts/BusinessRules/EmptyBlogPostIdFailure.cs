@@ -1,6 +1,6 @@
 using EmpCore.Domain;
 
-namespace CommentManagementService.Domain.BlogPosts.BusinessFailures;
+namespace CommentManagementService.Domain.BlogPosts.BusinessRules;
 
 public class EmptyBlogPostIdFailure : Failure
 {
